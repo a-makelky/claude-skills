@@ -1,5 +1,7 @@
 # Aaron Personal Content Writer Claude Skill
 
+> Last updated: 2026.3.9
+
 This package is optimized for Claude's "Upload Skill" feature.
 
 ## How to use
