@@ -35,7 +35,7 @@ Generic ecosystem role statements; conservation padding when status unknown; uns
 additionally (sentence-initial), align with, crucial, delve, emphasizing, enduring, enhance, foster, garner, highlight (verb), interplay, intricate, key (adj), landscape (abstract), multifaceted, pivotal, realm, showcase, spearhead, tapestry (abstract), testament, transformative, underscore (verb), utilize, valuable, vibrant
 
 **[NOT-ONLY-BUT]**
-"Not only X, but Y"; "It's not just about X, it's about Y"; "However" pivots creating artificial balance
+"Not only X, but Y"; "It's not just about X, it's about Y"; "However" pivots creating artificial balance; "That's not X, it's Y" / "That's not a [noun]. It's a [noun]." / "[Noun] isn't X. It's Y." false-pivot contrasts where two separate claims get crammed into a single negation-affirmation pair
 
 **[RULE-OF-3]**
 "Adjective, adjective, and adjective"; tripled phrases for false comprehensiveness
