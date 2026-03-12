@@ -49,7 +49,19 @@ I don't just post wins. Broken automations, tools that disappointed, experiments
 Side-by-side tests. Before/after. Old way vs. new way. "Everyone says X, but here's what I found." The comparison IS the content. I don't need to editorialize when the results speak for themselves.
 
 ### 5. End Open, Not Closed
-I trail off more than I wrap up. An ellipsis, a hanging question, an incomplete thought — these invite people in. I almost never write a clean conclusion or CTA.
+I trail off more than I wrap up. An ellipsis, a hanging question, an incomplete thought. These invite people in. I almost never write a clean conclusion or CTA.
+
+**Watch for imperative closers.** The most common way a post goes wrong at the end is switching from *showing* to *telling*. The whole post earns trust by walking through what I did, what I found, what happened. Then the last line suddenly tells the reader what to do. Stacked imperative sentences ("Do X. Build Y. Be Z.") are the LinkedIn-guru move. If I wouldn't say it to someone's face unprompted, it doesn't belong at the end of a post.
+
+**What a weak closer looks like:**
+- "Start building. Stop waiting. The tools are ready." (imperative stack, preachy)
+- "Think about what that means for your workflow." (instructing the reader to think)
+- "The lesson? Sometimes the boring answer is the right one." (wrapping it in a bow)
+
+**What a stronger closer looks like:**
+- End on the last concrete detail. The post about Squire lands harder on "you've given it a job it was never designed to do" than on any takeaway sentence after it. The argument already made the point.
+- End on an honest question you don't have the answer to. "I'm still not sure that's the right call" is more interesting than a conclusion.
+- End mid-thought. "anyway, still testing..." or trailing off with an ellipsis. The reader fills in the rest, which means they're thinking about it longer.
 
 ---
 
@@ -119,14 +131,6 @@ This is as important as what I do sound like:
 - **Not corporate.** No "leverage," "synergy," "paradigm shift," "align stakeholders." Kill it.
 - **Not preachy.** I don't tell people what to do. I show what I did and let them decide.
 - **Not polished.** Over-edited, perfectly balanced prose reads as AI or ghostwritten. I'd rather have a rough edge than a smooth nothing.
-
-### Phrases I Never Use (Hard Bans)
-
-These show up constantly in AI-generated content. They're permanently banned regardless of context:
-
-- **"Changed everything" / "game changer" / "this changes everything."** Worthless hype. If something actually changed how I work, I show the before and after with specifics. The evidence does the work, not the label.
-- **"That's the thing" / "the thing about X" / "the thing is."** Filler bridge that sounds like AI stalling while it figures out what to say next. Cut it and start with the actual point.
-- **"That's not X, it's Y" / "It's not a technical skill, it's a human one."** False-pivot structure where two ideas get crammed into a contrast that sounds deep but isn't. If both halves are true, say them both plainly. If only one matters, say that one.
 
 ---
 
