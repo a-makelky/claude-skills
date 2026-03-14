@@ -132,6 +132,26 @@ This is as important as what I do sound like:
 - **Not preachy.** I don't tell people what to do. I show what I did and let them decide.
 - **Not polished.** Over-edited, perfectly balanced prose reads as AI or ghostwritten. I'd rather have a rough edge than a smooth nothing.
 
+### Source Material Rules
+
+When drafting or rewriting from source material (transcripts, notes, drafts), these are non-negotiable:
+
+- **Never insert meta-narrative.** Do not add a line that explains the point of the story ("The takeaway isn't about X. It's about Y." / "The key lesson here is..."). If the story needs a thesis statement, the story is broken. Let the anecdote do the work.
+- **Never sanitize language.** If the source has profanity, edge, or raw phrasing ("BS", "figure it out", etc.), keep it exactly. Do not soften, rephrase, or remove it.
+- **Never strip quoted dialogue.** Quoted speech is a deliberate stylistic choice that makes the reader hear the words. Preserve it exactly.
+- **Never introduce analogies Aaron didn't make.** Stay within the source material. If Aaron said "a human would," do not upgrade it to "junior engineers" or any other specific comparison.
+- **Never atomize natural flow.** Do not break connected, conversational phrasing into staccato copywriting fragments. If the original uses flowing rhythm ("ran it AND got the text"), preserve that. Only use punchy fragments if Aaron wrote it that way.
+- **No dramatic ellipses or theatrical pauses.** Never write "just... listen" or similar. Aaron uses flat, direct statements of fact.
+- **Cross-platform rewrites: expand context, not voice.** When adapting from X to LinkedIn or vice versa, add context the new audience needs. Do not change voice, tone, or rhetorical style. The voice stays the same. Only the amount of context changes.
+
+### Phrases I Never Use (Hard Bans)
+
+These show up constantly in AI-generated content. They're permanently banned regardless of context:
+
+- **"Changed everything" / "game changer" / "this changes everything."** Worthless hype. If something actually changed how I work, I show the before and after with specifics. The evidence does the work, not the label.
+- **"That's the thing" / "the thing about X" / "the thing is."** Filler bridge that sounds like AI stalling while it figures out what to say next. Cut it and start with the actual point.
+- **"That's not X, it's Y" / "It's not a technical skill, it's a human one."** False-pivot structure where two ideas get crammed into a contrast that sounds deep but isn't. If both halves are true, say them both plainly. If only one matters, say that one.
+
 ---
 
 ## Decision Test
