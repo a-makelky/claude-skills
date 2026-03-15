@@ -1,6 +1,6 @@
 # Claude Skills Collection
 
-A curated collection of custom Claude skills for content creation, ghostwriting, and writing automation.
+A curated collection of custom Claude skills for writing, workflow automation, and personal operating systems.
 
 ## Skills Overview
 
@@ -98,6 +98,25 @@ Meta-skill for creating new Claude skills with proper structure.
 
 ---
 
+### 7. Tax Return
+**Path:** `tax-return/`
+
+Organizes annual tax documents into a CPA-ready packet with intake, file naming, reconciliation workpapers, and a final handoff memo.
+
+**Features:**
+- Yearly tax workspace and intake workflow
+- Standard naming and folder conventions
+- Personal, business, and rental separation rules
+- Workpaper guidance for income, expenses, occupancy, mileage, and manual form transcription
+- Clean upload-package process for Drive-friendly handoff
+
+**Files:**
+- `SKILL.md` - Main skill definition
+- `references/workflow.md` - Detailed yearly operating playbook
+- `references/templates.md` - Folder, naming, memo, and checklist templates
+
+---
+
 ## Usage
 
 These skills are designed to work with Claude (claude.ai) and Claude Code. Each skill includes:
@@ -119,6 +138,7 @@ claude-skills/
 ├── ai writing audit skills/
 ├── linkedin-hook-writer/
 ├── skill-creator/
+├── tax-return/
 ├── DescriptBrandVoiceSKILL.md
 ├── linkedin-hook-writer.skill
 └── README.md

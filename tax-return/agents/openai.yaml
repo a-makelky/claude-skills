@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tax Return"
+  short_description: "Organize and prep tax return packets"
+  default_prompt: "Use $tax-return to organize this year's tax documents, build workpapers, and prepare a CPA-ready packet."
