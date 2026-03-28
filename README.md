@@ -117,6 +117,23 @@ Organizes annual tax documents into a CPA-ready packet with intake, file naming,
 
 ---
 
+### 8. Podcast-to-Blog
+**Path:** `podcast-to-blog/` and `podcast-to-blog.skill`
+
+Converts podcast guest appearance transcripts into publish-ready blog posts in Aaron's authentic voice, with host backlinks and SEO metadata built in.
+
+**Features:**
+- Transcript-to-blog workflow for guest podcast appearances
+- Aaron voice preservation and banned-phrase rules
+- Required AI writing audit pass before final output
+- SEO metadata and host links block generation
+
+**Files:**
+- `SKILL.md` - Main skill definition
+- `podcast-to-blog.skill` - Packaged skill file
+
+---
+
 ## Usage
 
 These skills are designed to work with Claude (claude.ai) and Claude Code. Each skill includes:
@@ -137,9 +154,11 @@ claude-skills/
 ├── laura-ghostwriter-skill/
 ├── ai writing audit skills/
 ├── linkedin-hook-writer/
+├── podcast-to-blog/
 ├── skill-creator/
 ├── tax-return/
 ├── DescriptBrandVoiceSKILL.md
+├── podcast-to-blog.skill
 ├── linkedin-hook-writer.skill
 └── README.md
 ```
