@@ -1,0 +1,12 @@
+interface:
+  display_name: "Webinar Promo Calendar"
+  short_description: "Schedule webinar promo placeholders for X and LinkedIn from Notion briefs"
+  default_prompt: "Use the webinar Notion brief to recommend X and LinkedIn promo slots, generate the social UTM link, and create or draft the social calendar placeholders."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "notion"
+      description: "Notion MCP server"
+      transport: "streamable_http"
+      url: "https://mcp.notion.com/mcp"
