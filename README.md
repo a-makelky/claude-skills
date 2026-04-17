@@ -134,6 +134,25 @@ Converts podcast guest appearance transcripts into publish-ready blog posts in A
 
 ---
 
+### 9. Product Demo Storytelling
+**Path:** `product-demo-storytelling/`
+
+Turns a feature list, PRD, or rough draft into a hero-centric product demo story using the Pixar Story Spine, then produces a record-ready three-column script (screen + narration + clickpath). Based on Jodi Innerfield's product storytelling framework.
+
+**Features:**
+- Two-stage workflow with a user checkpoint between Structure and Script
+- Pixar Story Spine worksheet (hero, challenge, goal, 3 product-enabled wins, transformation)
+- Three-beat limit to prevent feature tours
+- Narration voice guidance by demo format (launch, testimonial, sales demo, etc.)
+- Return-to-hero pass to catch product-first drift
+- Worked example (Maya / Kiln) plus 8 anti-patterns with fixes
+- Voice-neutral output
+
+**Files:**
+- `SKILL.md` - Main skill definition
+
+---
+
 ## Usage
 
 These skills are designed to work with Claude (claude.ai) and Claude Code. Each skill includes:
@@ -155,6 +174,7 @@ claude-skills/
 ├── ai writing audit skills/
 ├── linkedin-hook-writer/
 ├── podcast-to-blog/
+├── product-demo-storytelling/
 ├── skill-creator/
 ├── tax-return/
 ├── DescriptBrandVoiceSKILL.md
