@@ -153,6 +153,24 @@ Turns a feature list, PRD, or rough draft into a hero-centric product demo story
 
 ---
 
+### 10. Webinar Promo Calendar
+**Path:** `webinar-promo-calendar/`
+
+Plans webinar promo timing for X and LinkedIn from a Descript Notion brief, generates the standard Luma social UTM link, and creates or drafts platform-specific placeholder entries for the social calendar.
+
+**Features:**
+- Reads webinar date, title, speakers, themes, ICP, and links from the webinar brief
+- Uses separate timing models for LinkedIn and X based on observed webinar promo performance
+- Generates the standard webinar social UTM link from the raw Luma URL
+- Checks the social calendar for existing promo placeholders before creating new ones
+- Falls back to drafting the exact placeholder specs when Notion write tools are unavailable
+
+**Files:**
+- `SKILL.md` - Main skill definition
+- `agents/openai.yaml` - Claude/Codex skill metadata
+
+---
+
 ## Usage
 
 These skills are designed to work with Claude (claude.ai) and Claude Code. Each skill includes:
@@ -177,6 +195,7 @@ claude-skills/
 ├── product-demo-storytelling/
 ├── skill-creator/
 ├── tax-return/
+├── webinar-promo-calendar/
 ├── DescriptBrandVoiceSKILL.md
 ├── podcast-to-blog.skill
 ├── linkedin-hook-writer.skill
