@@ -1,0 +1,4 @@
+interface:
+  display_name: "Minto Pyramid"
+  short_description: "Pressure-test structure before writing"
+  default_prompt: "Use $minto-pyramid to pressure-test this draft or idea, then create the HTML pyramid and restructuring plan."
