@@ -1,6 +1,6 @@
 ---
 name: webinar-promo
-description: "Generate a sequence of promotional social posts (X and LinkedIn) for an upcoming Descript webinar or livestream. Triggers: /webinar-promo, 'promote a webinar', 'webinar social posts', 'livestream promo copy', or any request to create social content promoting a live event."
+description: "Use for /webinar-promo or requests to create Descript webinar/livestream promo copy for X and LinkedIn using brand voice, Notion campaign context, and UTM rules."
 ---
 
 # Webinar Promo Post Generator
@@ -32,6 +32,41 @@ Before generating copy, load and apply:
 1. **Pattern data**: `~/.claude/skills/webinar-promo/webinar-promo-patterns.md`
    - What works, what doesn't, cadence benchmarks, top-performing examples
 2. **Brand voice**: The Descript brand voice principles below (sourced from DescriptBrandVoiceSKILL.md)
+
+### Live campaign data (Notion)
+
+Fetch these when the user references an existing webinar or asks you to match conventions from a prior campaign:
+
+| Resource | URL / ID | Use for |
+|----------|----------|---------|
+| Webinars 2026 DB | https://www.notion.so/2c0abe2e1a508053ab89df85fec0baf0 | Look up event date, title, speakers, ICP, theme, features |
+| Social media cal | https://www.notion.so/112abe2e1a5081a0bc0cc4afb3234923 | Write drafted posts here (filter Series = "Webinar Promo") |
+| X Ads Playbook | https://www.notion.so/33dabe2e1a50807e93cfeb9048b84aac | Audiences, topics, lookalike accounts for paid X ads |
+| UTM Builder | https://www.notion.so/233abe2e1a5080d6a6bbfb6dea871dca | Full UTM conventions across channels |
+
+**Discovery pattern:** Before generating, search Notion for `"Webinar Promo: [topic]"` to find any existing +2wk / +1wk posts for the same webinar. Match their conventions (time format, UTM variant, speaker tagging).
+
+### UTM conventions for Luma sign-up links
+
+Always append UTMs to the Luma URL. Shared params: `utm_campaign=webinar&utm_medium=social`.
+
+| Channel | `utm_source` value |
+|---------|-------------------|
+| Organic social (X, LI, FB, Threads) | `social` |
+| Paid X ads | `xad` (current) — older posts use `socialxad` |
+| Email | `email` (confirm in UTM Builder if unsure) |
+
+When in doubt, check the `Key Links` section of a prior promo page for the same webinar — the canonical link is typically listed there as "Social UTM link" and "Ad UTM link".
+
+### Notion page conventions
+
+When drafting individual posts, create a page in the Social media cal DB with:
+- **Series:** `Webinar Promo`
+- **Platform:** `X Twitter 🐦` and/or `LinkedIn 💼` etc.
+- **Asset type:** `Text`
+- **Status:** `Draft`
+- **Date:** the scheduled post date (not the webinar date)
+- **Subject:** `Webinar Promo: [Topic] ([+Xwk] or [+Xhr])` for organic, or `X Ads — [Topic] (Thu M/D)` for paid
 
 ---
 
