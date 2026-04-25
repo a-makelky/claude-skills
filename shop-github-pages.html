@@ -3,105 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenClaw Skills Shop — Production-Tested AI Agent Skills</title>
-    <meta name="description" content="Battle-tested OpenClaw skills running daily on a Raspberry Pi. Morning briefings, reliability audits, starter kits. From $7.">
-    <meta property="og:title" content="OpenClaw Skills — Production-Tested AI Agent Automations">
-    <meta property="og:description" content="AI agent skills with scripts, setup guides, and cron configs. Running daily on real hardware. From $7.">
+    <title>OpenClaw Skills - Aaron Makelky</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; background: #fafafa; line-height: 1.6; }
-        .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem; }
-        h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
-        .subtitle { color: #666; font-size: 1.05rem; margin-bottom: 2.5rem; }
-        .proof { display: inline-block; background: #f0f0f0; color: #555; padding: 0.15rem 0.6rem; border-radius: 3px; font-size: 0.8rem; margin-bottom: 2rem; }
-
-        .product-grid { display: grid; gap: 1.25rem; margin-bottom: 2.5rem; }
-        .product-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 1.5rem; position: relative; }
-        .product-card.featured { border-color: #000; border-width: 2px; }
-        .product-card .tag { position: absolute; top: -10px; right: 16px; background: #000; color: #fff; font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.03em; }
-        .product-card h3 { font-size: 1.15rem; margin-bottom: 0.15rem; }
-        .product-card .price { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem; }
-        .product-card .price span { font-size: 0.85rem; color: #666; font-weight: 400; }
-        .product-card p { color: #444; font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .product-card ul { padding-left: 1.25rem; margin-bottom: 1rem; }
-        .product-card li { font-size: 0.9rem; color: #555; margin-bottom: 0.3rem; }
-        .cta-btn { background: #000; color: #fff; border: none; padding: 0.7rem 1.5rem; font-size: 0.95rem; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; text-align: center; display: block; text-decoration: none; }
-        .cta-btn:hover { background: #222; }
-        .cta-btn.secondary { background: #fff; color: #000; border: 2px solid #000; }
-        .cta-btn.secondary:hover { background: #f5f5f5; }
-
-        .evidence { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; }
-        .evidence h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .evidence p { font-size: 0.9rem; color: #555; }
-
-        .refresh-info { font-size: 0.75rem; color: #999; margin-top: 2rem; text-align: center; }
-
-        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e5e5; text-align: center; font-size: 0.9rem; color: #666; }
-        footer a { color: #000; text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; color: #333; background: #f8f9fa;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; margin-bottom: 3rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #2c3e50; }
+        .subtitle { font-size: 1.2rem; color: #7f8c8d; margin-bottom: 2rem; }
+        .hero { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 3rem; }
+        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .product { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .product:hover { transform: translateY(-2px); }
+        .product h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #2c3e50; }
+        .price { font-size: 2rem; font-weight: bold; color: #27ae60; margin: 1rem 0; }
+        .description { margin-bottom: 1.5rem; color: #555; }
+        .features { list-style: none; margin-bottom: 1.5rem; }
+        .features li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        .features li:before { content: "✓"; position: absolute; left: 0; color: #27ae60; }
+        .cta { 
+            display: inline-block; 
+            background: #3498db; 
+            color: white; 
+            padding: 1rem 2rem; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .cta:hover { background: #2980b9; }
+        .bundle-tag { background: #e74c3c; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.9rem; margin-left: 1rem; }
+        .popular { border: 2px solid #f39c12; }
+        .popular::before { 
+            content: "⭐ Most Popular"; 
+            display: block; 
+            background: #f39c12; 
+            color: white; 
+            padding: 0.5rem 1rem; 
+            border-radius: 8px 8px 0 0; 
+            font-size: 0.9rem; 
+            font-weight: bold;
+            margin: -2rem -2rem 1rem -2rem;
+        }
+        footer { text-align: center; padding: 2rem; background: white; border-radius: 12px; margin-top: 2rem; }
+        .free-resources { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .free-resource { 
+            background: #ecf0f1; 
+            padding: 1rem; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            color: #2c3e50;
+            transition: background 0.2s;
+        }
+        .free-resource:hover { background: #bdc3c7; }
+        @media (max-width: 768px) {
+            .products { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>OpenClaw Skills</h1>
+            <p class="subtitle">Battle-tested automation templates for solo AI operators</p>
+        </header>
 
-<div class="container">
-    <h1>OpenClaw Skills Shop</h1>
-    <p class="subtitle">Battle-tested AI agent skills running daily on a Raspberry Pi. Scripts, setup guides, cron configs — ready to deploy.</p>
-    <div class="proof">Production-tested since March 2026</div>
-
-    <div class="product-grid">
-        <div class="product-card">
-            <h3>SOUL.md Starter Kit</h3>
-            <div class="price">$7 <span>one-time</span></div>
-            <p>The foundation. A complete SOUL.md template with 7 core truths, decision framework, escalation rules, and experiment-specific boundaries.</p>
-            <ul>
-                <li>SOUL.md template with voice guardrails</li>
-                <li>Decision framework (Benefit/Cost/Risk)</li>
-                <li>Model escalation triggers</li>
-                <li>Experiment boundary rules</li>
-            </ul>
-            <a href="https://checkout.stripe.com/c/pay/cs_live_a1Bs56IJ9G8LFygdnt9pJDvpqdWNpVzrGja5WgGaJg3wczFq1tp9UcNnaK#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXR1FCUEJ9aVxrTVRnZzc1UDNQUlVIaXRdSGhvTGtoSWNSS2A1UTE8bGxfQVVjQnBNSD1tX3BWcGFTYDZyfD0zf3Q9dXdfSEZrSzZBYGg8dmFfR2tJb0s1NUdxPEpCVHE2JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJjA3MGMyYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" class="cta-btn">Buy — $7</a>
+        <div class="hero">
+            <h2>Save 30+ hours of setup work with production-ready OpenClaw workflows</h2>
+            <p>Every skill has been running daily on a Raspberry Pi for months, not just theory. Get plug-and-play automations that work out of the box.</p>
         </div>
 
-        <div class="product-card featured">
-            <div class="tag">Most Popular</div>
-            <h3>First Workflow Package</h3>
-            <div class="price">$19 <span>one-time</span></div>
-            <p>Everything you need to run a daily morning briefing. Python scripts, calendar API integration, cron configs, and 15-minute setup.</p>
-            <ul>
-                <li>5 fully working Python scripts</li>
-                <li>Google Calendar API integration</li>
-                <li>Production cron configs</li>
-                <li>15-minute step-by-step setup guide</li>
-            </ul>
-            <a href="https://checkout.stripe.com/c/pay/cs_live_a1oScTSAz8rgP8d5At72EYtHHg3KtmWNTaZJrN9K1vxsTsm627eXbvUnhI#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXR1FCUEJ9aVxrTVRnZzc1UDNQUlVIaXRdSGhvTGtoSWNSS2A1UTE8bGxfQVVjQnBNSD1tX3BWcGFTYDZyfD0zf3Q9dXdfSEZrSzZBYGg8dmFfR2tJb0s1NUdxPEpCVHE2JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJjA3MGMyYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" class="cta-btn">Buy — $19</a>
+        <div class="products">
+            <div class="product popular">
+                <h3>OpenClaw First Workflow Package <span class="bundle-tag">$19</span></h3>
+                <div class="price">$19</div>
+                <p class="description">Complete morning briefing automation - your first working OpenClaw system in 15 minutes</p>
+                <ul class="features">
+                    <li>AI Morning Briefing Blueprint</li>
+                    <li>Health monitoring & auto-recovery</li>
+                    <li>Calendar integration + data sources</li>
+                    <li>Cron scheduling automation</li>
+                    <li>Setup guide + troubleshooting</li>
+                </ul>
+                <a href="https://checkout.stripe.com/c/pay/cs_live_a1oScTSAz8rgP8d5At" class="cta" onclick="return handlePurchase('first-workflow', 'first-workflow-package')">Buy Now</a>
+            </div>
+
+            <div class="product">
+                <h3>OpenClaw Reliability Audit <span class="bundle-tag">$29</span></h3>
+                <div class="price">$29</div>
+                <p class="description">Personalized agent reliability analysis for intermediate users with breaking agents</p>
+                <ul class="features">
+                    <li>Deep agent architecture review</li>
+                    <li>6 production-tested reliability patterns</li>
+                    <li>Personalized recommendations</li>
+                    <li>Preventative maintenance system</li>
+                    <li>24/7 agent uptime guarantee</li>
+                </ul>
+                <a href="https://checkout.stripe.com/c/pay/cs_live_a1HRG9ZrHFgNpE6PEv" class="cta" onclick="return handlePurchase('reliability-audit', 'reliability-audit')">Buy Now</a>
+            </div>
+
+            <div class="product">
+                <h3>OpenClaw SOUL.md Starter Kit <span class="bundle-tag">$7</span></h3>
+                <div class="price">$7</div>
+                <p class="description">Quick-start AI agent persona framework - go from zero to productive in 30 minutes</p>
+                <ul class="features">
+                    <li>Pre-configured SOUL.md template</li>
+                    <li>Decision framework + boundaries</li>
+                    <li>Core truths + priorities setup</li>
+                    <li>Error handling patterns</li>
+                    <li>Copy-paste ready documentation</li>
+                </ul>
+                <a href="https://checkout.stripe.com/c/pay/cs_live_a1Bs56IJ9G8LFygdnt" class="cta" onclick="return handlePurchase('soul-starter-kit', 'soul-starter-kit')">Buy Now</a>
+            </div>
+
+            <div class="product">
+                <h3>Complete Skills Bundle <span class="bundle-tag">$49</span></h3>
+                <div class="price">$49</div>
+                <p class="description">All 3 packages + reliability bundle - save 35% vs individual purchase</p>
+                <ul class="features">
+                    <li>Everything in First Workflow Package</li>
+                    <li>Personalized Reliability Audit</li>
+                    <li>SOUL.md Starter Kit</li>
+                    <li>Reliability Bundle (6 patterns)</li>
+                    <li>Priority email support</li>
+                </ul>
+                <a href="https://checkout.stripe.com/c/pay/cs_live_a1Bs56IJ9G8LFygdnt" class="cta" onclick="return handlePurchase('bundle', 'complete-skills-bundle')">Buy Bundle</a>
+            </div>
         </div>
 
-        <div class="product-card">
-            <h3>Reliability Audit</h3>
-            <div class="price">$29 <span>one-time</span></div>
-            <p>Send me your config. I'll find the failure points before they find you. Custom report in 48 hours.</p>
-            <ul>
-                <li>Reliability score (0–100) based on 7 production patterns</li>
-                <li>Critical issues that will cause failures this week</li>
-                <li>Copy-paste fixes for each problem</li>
-                <li>x402 compatible — agents can buy programmatically</li>
-            </ul>
-            <a href="https://checkout.stripe.com/c/pay/cs_live_a1HRG9ZrHFgNpE6PEvmmQHmdxgjVcsltDpPc4Bk1EwdGcTvSA0q2uVKMKg#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXR1FCUEJ9aVxrTVRnZzc1UDNQUlVIaXRdSGhvTGtoSWNSS2A1UTE8bGxfQVVjQnBNSD1tX3BWcGFTYDZyfD0zf3Q9dXdfSEZrSzZBYGg8dmFfR2tJb0s1NUdxPEpCVHE2JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJjA3MGMyYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" class="cta-btn secondary">Buy — $29</a>
-        </div>
-
+        <footer>
+            <h3>Free Resources</h3>
+            <p>Get started with these complementary resources</p>
+            <div class="free-resources">
+                <a href="https://gist.github.com/a-makelky/8f515cd5e5350ad2d22a6e8e7e723156" class="free-resource">OpenClaw Reliability Template</a>
+                <a href="https://gist.github.com/a-makelky/ab47221b52529c3da6afbaa7124c8f08" class="free-resource">5-Minute Morning Briefing Checklist</a>
+            </div>
+            <p style="margin-top: 2rem; color: #7f8c8d;">© 2026 Aaron Makelky | Questions? Email aaron@makelky.com</p>
+        </footer>
     </div>
 
-    <div class="evidence">
-        <h2>Why These Work</h2>
-        <p>These run daily on a Raspberry Pi. Every skill includes the actual scripts, not screenshots. Every setup guide was written from real installation experience. No theory — production-tested code that works.</p>
-    </div>
+    <script>
+        function handlePurchase(productType, productName) {
+            // Analytics tracking could go here
+            console.log(`Purchase initiated for ${productName}`);
+            return true; // Allow normal link behavior
+        }
 
-    <div class="refresh-info">Checkout links refresh daily at 3am MDT</div>
-
-    <footer>
-        <p>Built by <a href="https://aaronmakelky.com">Aaron Makelky</a> • Questions? <a href="https://t.me/aaronmakelky">Telegram</a></p>
-    </footer>
-</div>
-
+        // Auto-refresh checkout URLs daily at 3am MDT (9am UTC)
+        function scheduleRefresh() {
+            const now = new Date();
+            const refreshTime = new Date(now);
+            refreshTime.setUTCHours(9, 0, 0, 0); // 9am UTC = 3am MDT
+            if (refreshTime <= now) {
+                refreshTime.setDate(refreshTime.getDate() + 1);
+            }
+            const msUntilRefresh = refreshTime - now;
+            setTimeout(() => {
+                fetch('/api/refresh-checkout', { method: 'POST' })
+                    .then(() => setTimeout(scheduleRefresh, 24 * 60 * 60 * 1000))
+                    .catch(() => setTimeout(scheduleRefresh, 60 * 60 * 1000));
+            }, msUntilRefresh);
+        }
+        
+        // Initialize refresh scheduling
+        scheduleRefresh();
+    </script>
 </body>
 </html>

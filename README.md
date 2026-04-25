@@ -1,211 +1,25 @@
-# Claude Skills Collection
+# OpenClaw Skills Shop
 
-A curated collection of custom Claude skills for writing, workflow automation, and personal operating systems.
+Shop for OpenClaw automation templates and skills.
 
-## Skills Overview
+## Products
 
-### 1. Aaron Personal Content Writer
-**Path:** `aaron_personal_content_writer_skill/`
+- **OpenClaw First Workflow Package** ($19) - Complete morning briefing automation
+- **OpenClaw Reliability Audit** ($29) - Personalized agent reliability analysis  
+- **OpenClaw SOUL.md Starter Kit** ($7) - Quick-start AI agent persona framework
+- **Complete Skills Bundle** ($49) - All 3 packages + reliability bundle
 
-Expert ghostwriter for tech-focused thought leadership on LinkedIn and X (Twitter).
+## Free Resources
 
-**Features:**
-- Authentic, direct, unpretentious voice
-- Proven copywriting frameworks (Pyramid Principle, PAS, PASTOR)
-- Topics: AI tools (Notion, Cursor, Claude), tech-humanism
-- Anti-patterns built in (no "game-changer," no emojis, no engagement bait)
+- [OpenClaw Reliability Template](https://gist.github.com/a-makelky/8f515cd5e5350ad2d22a6e8e7e723156)
+- [5-Minute Morning Briefing Checklist](https://gist.github.com/a-makelky/ab47221b52529c3da6afbaa7124c8f08)
 
-**Files:**
-- `SKILL.md` - Main skill definition
-- `style_guide.md` - Comprehensive writing style guide
+## Deployment
 
----
+This shop is automatically deployed to GitHub Pages via GitHub Actions.
 
-### 2. Laura Ghostwriter
-**Path:** `laura-ghostwriter-skill/`
+## Setup
 
-LinkedIn ghostwriter for Laura Burkhauser, CEO of Descript.
-
-**Features:**
-- Sharp, self-deprecating, unpolished voice
-- Signature frameworks ("The burning platform and the beach," "Context is currency")
-- Activates with `/lauraghostwriter` command
-- Continuous learning protocol built-in
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `voice_profile.md` - Detailed voice analysis
-- `sample_posts.md` - Reference posts by content type
-
----
-
-### 3. Descript Social Voice
-**Path:** `DescriptBrandVoiceSKILL.md`
-
-Social media brand voice for @Descript on X (Twitter) and LinkedIn.
-
-**Core Principles:**
-- Human: Conversational, never corporate
-- Realistic: Honest, empathetic, self-aware
-- Subversive: Surprising, uncomfortable, absurd
-
-**Platforms:**
-- X: Sharp, punchy, slightly unhinged
-- LinkedIn: Professional but still human
-
----
-
-### 4. LinkedIn Hook Writer
-**Path:** `linkedin-hook-writer/` and `linkedin-hook-writer.skill`
-
-Creates attention-grabbing LinkedIn hooks and openers.
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `references/hook-templates.md` - Hook templates and patterns
-- `scripts/validate_hook.py` - Validation script
-
----
-
-### 5. AI Writing Audit Skills
-**Path:** `ai writing audit skills/`
-
-Writing quality checks and audits for AI-generated content.
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `checklist.md` - Writing audit checklist
-- `descript-voice.md` - Descript-specific voice guidelines
-- `ai-writing-audit.skill` - Packaged skill file
-
----
-
-### 6. Skill Creator
-**Path:** `skill-creator/`
-
-Meta-skill for creating new Claude skills with proper structure.
-
-**Features:**
-- Templates for new skills
-- Best practices guide
-- Initialization, validation, and packaging scripts
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `templates/SKILL_TEMPLATE.md` - Skill template
-- `references/best_practices.md` - Best practices guide
-- `scripts/` - Utility scripts (init, validate, package)
-
----
-
-### 7. Tax Return
-**Path:** `tax-return/`
-
-Organizes annual tax documents into a CPA-ready packet with intake, file naming, reconciliation workpapers, and a final handoff memo.
-
-**Features:**
-- Yearly tax workspace and intake workflow
-- Standard naming and folder conventions
-- Personal, business, and rental separation rules
-- Workpaper guidance for income, expenses, occupancy, mileage, and manual form transcription
-- Clean upload-package process for Drive-friendly handoff
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `references/workflow.md` - Detailed yearly operating playbook
-- `references/templates.md` - Folder, naming, memo, and checklist templates
-
----
-
-### 8. Podcast-to-Blog
-**Path:** `podcast-to-blog/` and `podcast-to-blog.skill`
-
-Converts podcast guest appearance transcripts into publish-ready blog posts in Aaron's authentic voice, with host backlinks and SEO metadata built in.
-
-**Features:**
-- Transcript-to-blog workflow for guest podcast appearances
-- Aaron voice preservation and banned-phrase rules
-- Required AI writing audit pass before final output
-- SEO metadata and host links block generation
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `podcast-to-blog.skill` - Packaged skill file
-
----
-
-### 9. Product Demo Storytelling
-**Path:** `product-demo-storytelling/`
-
-Turns a feature list, PRD, or rough draft into a hero-centric product demo story using the Pixar Story Spine, then produces a record-ready three-column script (screen + narration + clickpath). Based on Jodi Innerfield's product storytelling framework.
-
-**Features:**
-- Two-stage workflow with a user checkpoint between Structure and Script
-- Pixar Story Spine worksheet (hero, challenge, goal, 3 product-enabled wins, transformation)
-- Three-beat limit to prevent feature tours
-- Narration voice guidance by demo format (launch, testimonial, sales demo, etc.)
-- Return-to-hero pass to catch product-first drift
-- Worked example (Maya / Kiln) plus 8 anti-patterns with fixes
-- Voice-neutral output
-
-**Files:**
-- `SKILL.md` - Main skill definition
-
----
-
-### 10. Webinar Promo Calendar
-**Path:** `webinar-promo-calendar/`
-
-Plans webinar promo timing for X and LinkedIn from a Descript Notion brief, generates the standard Luma social UTM link, and creates or drafts platform-specific placeholder entries for the social calendar.
-
-**Features:**
-- Reads webinar date, title, speakers, themes, ICP, and links from the webinar brief
-- Uses separate timing models for LinkedIn and X based on observed webinar promo performance
-- Generates the standard webinar social UTM link from the raw Luma URL
-- Checks the social calendar for existing promo placeholders before creating new ones
-- Falls back to drafting the exact placeholder specs when Notion write tools are unavailable
-
-**Files:**
-- `SKILL.md` - Main skill definition
-- `agents/openai.yaml` - Claude/Codex skill metadata
-
----
-
-## Usage
-
-These skills are designed to work with Claude (claude.ai) and Claude Code. Each skill includes:
-- A `SKILL.md` file with the skill definition
-- Supporting files (style guides, templates, examples)
-- Some skills include packaged `.skill` or `.claude.skill.zip` files
-
-To use a skill:
-1. Import the skill into Claude or Claude Code
-2. Activate it according to its specific trigger (command or context)
-3. Follow the skill's guidance and frameworks
-
-## Repository Structure
-
-```
-claude-skills/
-├── aaron_personal_content_writer_skill/
-├── laura-ghostwriter-skill/
-├── ai writing audit skills/
-├── linkedin-hook-writer/
-├── podcast-to-blog/
-├── product-demo-storytelling/
-├── skill-creator/
-├── tax-return/
-├── webinar-promo-calendar/
-├── DescriptBrandVoiceSKILL.md
-├── podcast-to-blog.skill
-├── linkedin-hook-writer.skill
-└── README.md
-```
-
-## Updates
-
-This repository is synced with a local iCloud folder. Any changes made locally will be committed and pushed to keep skills up to date.
-
----
-
-*Maintained by Aaron Makelky*
+1. Enable GitHub Pages in repo settings
+2. Source: GitHub Actions
+3. Visit: https://a-makelky.github.io/claude-skills/shop-github-pages.html
