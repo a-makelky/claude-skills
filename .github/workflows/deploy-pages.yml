@@ -21,19 +21,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: Create deploy dir
-      run: |
-        mkdir -p _site
-        cp shop-github-pages.html _site/index.html
-        cp soul-starter-kit.html _site/soul-starter-kit.html 2>/dev/null || true
-    
     - name: Setup Pages
       uses: actions/configure-pages@v4
     
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './_site'
+        path: '.'
     
     - name: Deploy to GitHub Pages
       id: deployment
