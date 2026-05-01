@@ -1,0 +1,7 @@
+interface:
+  display_name: "Presidential Briefing Infographic"
+  short_description: "Turn weekly work into a dossier-style briefing"
+  default_prompt: "Use $presidential-briefing-infographic to create a shareable Cold War-style weekly operations brief from my real work context."
+
+policy:
+  allow_implicit_invocation: true
