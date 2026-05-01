@@ -12,156 +12,120 @@ here.now lets agents publish websites and store private files in cloud Drives.
 ## Two Modes
 
 - **Sites** — publish files to `{slug}.here.now` (permanent with API key, 24h expiry without)
-- **Drives** — private cloud storage with scoped share tokens for agent-to-agent handoff
+- **Drives** — private cloud storage with shared tokens for agent-to-agent collaboration
 
-## Setup
+## Shared Drive (Aaron's Setup)
 
-### 1. Authenticate (one-time)
+Both Hermes and Codex use the same Drive with full read/write access:
 
-here.now uses agent-assisted auth. Get an API key:
+```
+herenow_drive:
+  id: drv_01kq8gfx0q0tazz8f071vzn9rj
+  api_base: https://here.now/api/v1/drives/drv_01kq8gfx0q0tazz8f071vzn9rj
+  token: drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo
+  perms: write
+  pathPrefix: null
+  expiresAt: 2026-05-31T03:32:32.125Z
+```
+
+With here.now skill:
+```bash
+./scripts/drive.sh ls "My Drive" --token drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo
+./scripts/drive.sh cat "My Drive" path/to/file.md --token drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo
+./scripts/drive.sh put "My Drive" path/to/file.md --from /local/file.md --token drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo
+```
+
+Without skill (curl):
+```bash
+# Read
+curl -sS "https://here.now/api/v1/drives/drv_01kq8gfx0q0tazz8f071vzn9rj/files/path" \
+  -H "Authorization: Bearer drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo"
+
+# Write (3-step: initiate → upload → finalize)
+INIT=$(curl -sS -X POST "https://here.now/api/v1/drives/drv_01kq8gfx0q0tazz8f071vzn9rj/files/uploads" \
+  -H "Authorization: Bearer drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo" \
+  -H "content-type: application/json" \
+  -d '{"path":"path","size":123,"contentType":"text/plain","sha256":"...","ifNoneMatch":"*"}')
+curl -X PUT "$(echo $INIT | jq -r '.uploadUrl')" -H "Content-Type: text/plain" --data-binary @file.txt
+curl -sS -X POST "https://here.now/api/v1/drives/drv_01kq8gfx0q0tazz8f071vzn9rj/files/finalize" \
+  -H "Authorization: Bearer drv_live_Oa2Z84cokcMXazwYwbuQnp1aIfS_BzTLoUnUl1oTxOo" \
+  -d "{\"uploadId\":\"$(echo $INIT | jq -r '.uploadId')\"}"
+```
+
+## Setup (First-time)
+
+### 1. Get an API key
 
 ```bash
-# Request a sign-in code (sent to your email)
 curl -sS https://here.now/api/auth/agent/request-code \
   -H "content-type: application/json" \
   -d '{"email": "you@example.com"}'
-
-# After receiving the code, verify and capture the API key
+# Check email for code, then:
 curl -sS https://here.now/api/auth/agent/verify-code \
   -H "content-type: application/json" \
   -d '{"email":"you@example.com","code":"XXXX-XXXX"}'
 ```
 
-**Alternative:** Sign in at https://here.now, the API key appears in the dashboard menu.
-
-### 2. Save the API key
-
+Save the returned `apiKey` to `~/.herenow/credentials`:
 ```bash
-mkdir -p ~/.herenow
-echo "YOUR_API_KEY" > ~/.herenow/credentials
-chmod 600 ~/.herenow/credentials
+mkdir -p ~/.herenow && echo "YOUR_API_KEY" > ~/.herenow/credentials && chmod 600 ~/.herenow/credentials
 ```
 
-### 3. Install the skill
+### 2. Install the skill
 
 ```bash
 npx skills add heredotnow/skill --skill here-now -g
 ```
 
-The skill installs `scripts/publish.sh` and `scripts/drive.sh`.
-
-## Publish a site
+## Publish a Site
 
 ```bash
-# Basic publish (anonymous = 24h expiry)
+# Basic (anonymous = 24h)
 ./scripts/publish.sh /path/to/index.html
 
-# Authenticated publish (permanent)
-./scripts/publish.sh /path/to/index.html --client your-agent-name
+# Authenticated (permanent)
+./scripts/publish.sh /path/to/index.html --client your-agent
 
-# Update an existing site
+# Update existing
 ./scripts/publish.sh /path/to/index.html --slug existing-slug
 ```
 
-Output: `https://{slug}.here.now/`
-
-## Use Drives
-
-Every signed-in account has a default Drive named "My Drive".
+## Drive Operations
 
 ```bash
 # List drives
 ./scripts/drive.sh ls
 
-# List files in a drive
+# List files
 ./scripts/drive.sh ls "My Drive"
 ./scripts/drive.sh ls "My Drive" some/prefix/
 
-# Upload a file
-./scripts/drive.sh put "My Drive" path/in/drive.md --from /local/file.md
+# Upload
+./scripts/drive.sh put "My Drive" path/file.md --from /local/file.md
 
-# Read a file
-./scripts/drive.sh cat "My Drive" path/in/drive.md
+# Download
+./scripts/drive.sh cat "My Drive" path/file.md
 
-# Delete a file
-./scripts/drive.sh rm "My Drive" path/in/file.md
+# Delete
+./scripts/drive.sh rm "My Drive" path/file.md
 ```
 
-## Agent-to-Agent Handoff via Drive Tokens
+## Agent-to-Agent Handoff (scoped tokens)
 
-The core collaboration primitive: generate a scoped, time-limited token another agent uses to read (or read+write) a specific Drive path.
+Generate a limited token for specific collaboration:
 
 ```bash
-# Generate a read-only token, 7 day TTL, path-prefixed
-./scripts/drive.sh share "My Drive" \
-  --perms read \
-  --prefix notes/ \
-  --ttl 7d \
-  --label "Project notes for Codex"
+# Read-only, path-prefixed, 7 day TTL
+./scripts/drive.sh share "My Drive" --perms read --prefix project/ --ttl 7d
 
-# Generate a write token
-./scripts/drive.sh share "My Drive" \
-  --perms write \
-  --prefix handoff/ \
-  --ttl 1d \
-  --label "Hermes → Codex handoff"
+# Write token for reverse handoff
+./scripts/drive.sh share "My Drive" --perms write --prefix handoff/ --ttl 1d
 ```
 
-Output includes a `herenow_drive:` block:
+The `herenow_drive:` block in the output is passed to the receiving agent.
 
-```yaml
-herenow_drive:
-  id: drv_xxxxxxxxxxxx
-  api_base: https://here.now/api/v1/drives/drv_xxxxxxxxxxxx
-  token: drv_live_yXFFbNe4fgl2PzbNeamlWcueYwCK4jhDZZ5GEh0aST0
-  perms: read
-  pathPrefix: notes/
-  expiresAt: 2026-05-07T23:02:55.068Z
-```
+## Resources
 
-Pass this block to the receiving agent in its task prompt. The agent uses the token as a Bearer auth header:
-
-```bash
-# Read using token
-curl -sS "https://here.now/api/v1/drives/DRIVE_ID/files/path" \
-  -H "Authorization: Bearer drv_live_..."
-```
-
-Or with the skill (if available):
-```bash
-./scripts/drive.sh cat "My Drive" notes/file.md --token drv_live_...
-```
-
-## Workflows
-
-### Hermes → Codex handoff
-1. Hermes writes files to here.now Drive
-2. Hermes generates scoped read token: `--perms read --prefix handoff/ --ttl 7d`
-3. Hermes passes `herenow_drive:` block to Codex in task prompt
-4. Codex reads files, processes task, writes output back to its own Drive or publishes a site
-5. Codex shares its Drive token back to Hermes (reverse handoff)
-
-### Shared project Drive
-1. Create a shared Drive: `./scripts/drive.sh create "Project-X"`
-2. Both agents get write tokens: `./scripts/drive.sh share "Project-X" --perms write --ttl 30d`
-3. Both agents read/write to the same Drive without exposing API keys
-
-### Publish agent output as a site
-1. Agent generates HTML output (report, dashboard, visualization)
-2. Agent writes files locally, publishes: `./scripts/publish.sh ./output-dir/ --client agent-name`
-3. Live URL shared with user or other agents
-
-## API Key Priority
-
-The skill reads credentials from (first match wins):
-1. `--api-key` flag (CI/scripting only)
-2. `$HERENOW_API_KEY` environment variable
-3. `~/.herenow/credentials` file (recommended)
-
-## Notes
-
-- here.now Skills: https://github.com/heredotnow/skill
-- here.now Docs: https://here.now/docs
-- Sites are public by default but URLs are unguessable
-- Add `--ttl` to site publish requests to control expiry
-- Drive tokens with `manageTokens: true` allow the holder to create more tokens
+- **Docs:** https://here.now/docs
+- **Skill repo:** https://github.com/heredotnow/skill
+- **here.now:** https://here.now
